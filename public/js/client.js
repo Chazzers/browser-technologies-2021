@@ -28,10 +28,6 @@ function createAnswer(form) {
 	i++
 }
 
-// function submitForm(event) {
-// 	event.preventDefault()
-// }
-
 // document.querySelector('#submit').addEventListener('click', submitForm)
 
 function initCreatePoll() {
@@ -39,4 +35,3 @@ function initCreatePoll() {
 }
 
 initCreatePoll()
-
