@@ -7,7 +7,9 @@ function initRegister(req, res) {
 			error: error
 		})
 	} else {
-		render(res, 'register')
+		render(res, 'register', {
+			error: undefined
+		})
 	}
 	
 }
