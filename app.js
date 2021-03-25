@@ -17,7 +17,6 @@ const addAnswer = require('./controllers/helpers/addAnswer.js')
 const removeAnswer = require('./controllers/helpers/removeAnswer.js')
 
 const uri = process.env.MONGODB_URI;
-const id = uuidv4()
 
 const sessionConfig = {
 	secret: process.env.SESSION_SECRET,
@@ -29,14 +28,18 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, dbName:
 
 app.set('view engine', 'ejs')
 	.set('views', './views')
+	.set('trust proxy', true)
 
 	.use(session(sessionConfig))
 	.use(express.static('public'))
 	.use(express.urlencoded({
 		extended: true
 	}))
-	.use((req,res,next) => {
-		req.body.id = id
+	.use((req, res, next) => {
+		console.log(req.ip)
+		if(req.body.id === undefined) {
+			req.body.id = uuidv4()
+		}
 		next()
 	})
 	
@@ -48,5 +51,6 @@ app.set('view engine', 'ejs')
 	.post('/submit-remove-answer', removeAnswer)
 	
 	.listen(port, () => {
+
 		console.log(`this app is litening on: http://localhost:${port}`)
 	})
