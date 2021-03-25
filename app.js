@@ -23,27 +23,32 @@ const sessionConfig = {
 	resave: false,
 	saveUninitialized: true,
 }
+let id
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'polls' });
 
 app.set('view engine', 'ejs')
 	.set('views', './views')
-	.set('trust proxy', true)
 
 	.use(session(sessionConfig))
 	.use(express.static('public'))
 	.use(express.urlencoded({
 		extended: true
 	}))
-	.use((req, res, next) => {
-		console.log(req.ip)
-		if(req.body.id === undefined) {
-			req.body.id = uuidv4()
+	.use('/', (req, res, next) => {
+		if(id) {
+			req.body.id = id
 		}
 		next()
 	})
 	
-	.get('/', initHome)
+	.get('/', (req, res) => {
+		if(id === undefined) {
+			id = uuidv4()
+		}
+		console.log(req.body.id)
+		res.render('index')
+	})
 	.get('/create-poll', initCreatePoll)
 	
 	.post('/submit-poll', createPoll)
