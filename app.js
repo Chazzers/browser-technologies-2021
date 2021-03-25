@@ -13,25 +13,27 @@ const initRegister = require('./controllers/init/initRegister.js')
 const createPoll = require('./controllers/helpers/createPoll.js')
 const createAccount = require('./controllers/helpers/createAccount.js')
 const login = require('./controllers/helpers/login.js')
+const addAnswer = require('./controllers/helpers/addAnswer.js')
+const removeAnswer = require('./controllers/helpers/removeAnswer.js')
 
 const uri = process.env.MONGODB_URI;
 const sessionConfig = {
 	secret: process.env.SESSION_SECRET,
-	cookie: { secure: true },
 	resave: false,
 	saveUninitialized: true,
 }
+
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, dbName: 'polls' });
 
 app.set('view engine', 'ejs')
 	.set('views', './views')
 
+	.use(session(sessionConfig))
 	.use(express.static('public'))
 	.use(express.urlencoded({
 		extended: true
 	}))
-	.use(session(sessionConfig))
-
+	
 	.get('/', initHome)
 	.get('/create-poll', initCreatePoll)
 	.get('/login', initLogin)
@@ -40,7 +42,9 @@ app.set('view engine', 'ejs')
 	.post('/submit-poll', createPoll)
 	.post('/submit-register', createAccount)
 	.post('/submit-login', login)
-
+	.post('/submit-add-answer', addAnswer)
+	.post('/submit-remove-answer', removeAnswer)
+	
 	.listen(port, () => {
 		console.log(`this app is litening on: http://localhost:${port}`)
 	})

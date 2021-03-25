@@ -1,8 +1,17 @@
-<form id="create-poll" action="api" method="POST">
+<form id="create-poll" action="submit-poll" method="POST">
 	<label for="poll">Poll</label>
 	<input type="text" id="poll" name="poll" required>
-	<label for="option">Option 1</label>
-	<input type="text" id="option" name="options">
-	<button type="button" id="add-answer">Add answer</button>
+	<% if(answers) { %>
+	<% answers.forEach((answer, index) => { %>
+		<label for="option <%= index %>">Option <%= index %></label>
+		<input type="text" id="option <%= index %>" name="options">
+	<% }) %>
+	<% } %>
+	<button type="submit" id="add-answer" formaction="submit-add-answer" value="add" name="add">
+		Add answer
+	</button>
+	<button type="submit" id="remove-answer" formaction="submit-remove-answer" value="remove">
+		Remove answer
+	</button>
 	<button id="submit" type="submit">Create Poll</button>
 </form>
