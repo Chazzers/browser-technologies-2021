@@ -37,3 +37,9 @@ routes:
 	<input type="text" placeholder="Question/Statement">
 </form>
 ```
+
+
+### Questions
+
+- Je heb voor een session cookies nodig, dus het wordt lastig voor ons om als accounts noodzakelijk zijn niet zonder cookies te werken...
+- Cookies 
