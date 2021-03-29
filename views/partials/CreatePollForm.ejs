@@ -1,17 +1,30 @@
 <form id="create-poll" action="submit-poll" method="POST">
-	<label for="poll">Poll</label>
-	<input value="<%= data.poll !== undefined ? data.poll : '' %>" type="text" id="poll" name="poll" required>
+	<div>
+		<label for="poll">Poll</label>
+		<input value="<%= data.poll !== undefined ? data.poll : '' %>" type="text" id="poll" name="poll" required>
+	</div>
 	<% if(data.options) { %>
 	<% data.options.forEach((option) => { %>
-		<label for="<%= option.id %>"><%= option.name %></label>
-		<input type="text" id="<%= option.id %>" name="options" value="<%= option.value %>">
+		<div>
+			<label for="<%= option.id %>"><%= option.name %></label>
+			<input type="text" id="<%= option.id %>" name="options" value="<%= option.value %>" required>
+		</div>
 	<% }) %>
+	<% } else { %>
+		<div>
+			<label for="option-1">Option 1</label>
+			<input type="text" id="option-1" name="options" value="">
+		</div>
+		<div>
+			<label for="option-2">Option 2</label>
+			<input type="text" id="option-2" name="options" value="">
+		</div>
 	<% } %>
 	<button type="submit" id="add-answer" formaction="create-poll" value="add" name="addOrRemove">
-		Add answer
+		Add option
 	</button>
 	<button type="submit" id="remove-answer" formaction="create-poll" value="remove" name="addOrRemove">
-		Remove answer
+		Remove option
 	</button>
 	<button id="submit" type="submit">Create Poll</button>
 </form>

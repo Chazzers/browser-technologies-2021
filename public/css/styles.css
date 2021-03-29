@@ -1,3 +1,253 @@
+:root {
+	--main-color: #3B5CD0;
+	--secondary-color: #ffffff;
+	--third-color: #000000;
+}
+
 .error {
 	border-color: crimson;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Medium.woff2') format('woff2'),
+        url('../fonts/Poppins-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Regular.woff2') format('woff2'),
+        url('../fonts/Poppins-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Light.woff2') format('woff2'),
+        url('../fonts/Poppins-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Bold.woff2') format('woff2'),
+        url('../fonts/Poppins-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Black.woff2') format('woff2'),
+        url('../fonts/Poppins-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+	box-sizing: border-box;
+	line-height: 1.5;
+}
+
+header {
+	margin: 0;
+	padding: 1rem;
+	background-color: #3B5CD0;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 1.2em;
+	font-weight: 600;
+	text-align: center;
+}
+
+
+body {
+	font-family: 'Poppins';
+	margin: 0;
+}
+
+h1 {
+	font-size: 2.5em;
+	font-family: 'Poppins';
+	font-weight: 900;
+	color: #ffffff;
+}
+
+h2 {
+	font-size: 2em;
+	font-family: 'Poppins';
+	font-weight: bold;
+}
+
+h3 {
+	font-size: 1.75em;
+	font-family: 'Poppins';
+	font-weight: 500;
+}
+
+h4 {
+	font-size: 1.5em;
+	font-family: 'Poppins';
+	font-weight: 500;
+}
+
+h5 {
+	font-size: 1.25em;
+	font-family: 'Poppins';
+	font-weight: 500;
+}
+
+main {
+	max-width: 1080px;
+	margin: 0 auto;
+}
+
+main article {
+	margin: 0;
+	
+}
+
+main article:nth-child(even) {
+	background-color: #E5E4E4;
+}
+
+main article:nth-child(odd) {
+	background-color: #ffffff;
+}
+
+main article a {
+	color: #000000;
+	display: block;
+	padding: 1rem;
+}
+
+
+main h2 {
+	color: #3B5CD0;
+	font-size: 1.5em;
+	margin: 1rem;
+}
+
+main #poll-form {
+
+}
+
+main #create-poll {
+	margin: 1rem;
+}
+
+main #create-poll div label, 
+main #create-poll div input {
+	display: block;
+}
+
+main #create-poll div input {
+	width: 100%;
+}
+
+main #poll-form input[type="radio"] {
+	display: inline-block;
+}
+
+main #poll-form div label {
+	display: block;
+	margin-right: 2rem;
+}
+
+main #poll-form div {
+	position: relative;
+	padding: 1rem;
+}
+
+main #poll-form div:nth-of-type(odd) {
+	background-color: #E5E4E4;
+}
+
+main #poll-form div:nth-of-type(even) {
+	background-color: #ffffff;
+}
+
+main #poll-form div input[type="radio"]:checked + label {
+	color: #3B5CD0;
+	font-weight: 600;
+}
+
+main #poll-form div input[type="radio"] {
+	position: absolute;
+	right: 1rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+main #poll-form button {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	font-size: 1em;
+	background-color: #3B5CD0;
+	color: #ffffff;
+	font-weight: 600;
+	border: none;
+	padding: 1rem;
+}
+
+main > div {
+	padding: 1rem;
+	position: relative;
+	
+}
+
+main > div:nth-of-type(odd) {
+	background-color: #E5E4E4;
+}
+
+main > div:nth-of-type(even) {
+	background-color: #ffffff;
+}
+
+main > div p {
+	margin: 0;
+	position: relative;
+	z-index: 1;
+}
+
+main > div > .progress {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background-color: rgba(0,0,0,0.15);
+}
+
+main > div > p:nth-of-type(2) {
+	position: absolute;
+	right: 1rem;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+body > a {
+	position: absolute;
+	bottom: 0;
+	text-align: center;
+	display: block;
+	width: 100%;
+	padding: 1em;
+	font-size: 1em;
+	color: #3B5CD0;
+	text-decoration: underline;
+	font-weight: 600;
 }

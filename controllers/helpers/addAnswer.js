@@ -6,7 +6,7 @@ function addAnswer(req, res) {
 	if(req.body.addOrRemove === 'add') {
 		options.push({ key: `option-${1}`,  value: ''})
 	}
-	if(req.body.addOrRemove === 'remove') {
+	if(req.body.addOrRemove === 'remove' && req.body.options.length > 2) {
 		options.pop()
 	}
 	if(Array.isArray(req.body.options)) {
@@ -33,6 +33,7 @@ function addAnswer(req, res) {
 	
 	res.render('create-poll', {
 		data: req.body,
+		title: 'Create poll'
 	})
 }
 

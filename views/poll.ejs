@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/Head.ejs') %>
+
+<body>
+	<%- include('partials/Header.ejs') %>
+	<main>
+		<h2><%= data.poll %></h2>
+		<form id="poll-form" action="/polls/<%= data.id %>" method="POST">
+			<% data.options.forEach(option => { %>
+				<div>
+					<input required type="radio" name="options" value="<%= option.id %>" id="<%= `option-${option.id}` %>">
+					<label for="<%= `option-${option.id}` %>"><%= option.option %></label>
+				</div>
+			<% }) %>
+			<button type="submit">Submit Answer</button>
+		</form>
+	</main>
+</body>
+<script src="/js/client.js"></script>
+</html>

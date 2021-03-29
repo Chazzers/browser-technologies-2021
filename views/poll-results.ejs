@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<%- include('partials/Head.ejs') %>
+
+<body>
+	<%- include('partials/Header.ejs') %>
+	<main>
+		<h2><%= data.poll %></h2>
+		
+		<% data.options.forEach(option => { %>
+			<div>
+				<div class="progress" style="width: <%= option.votePercentage %>%"></div>
+				<p><%= `${option.option}: ${option.votes}` %></p>
+				<p><%= `${option.votePercentage}%` %></p>
+			</div>
+		<% }) %>
+	</main>
+	<a href="/">Back to polls</a>
+</body>
+<script src="/js/client.js"></script>
+</html>

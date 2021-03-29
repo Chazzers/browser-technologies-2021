@@ -3,9 +3,38 @@
 <%- include('partials/Head.ejs') %>
 
 <body>
+	<%- include('partials/Header.ejs') %>
 	<main>
-		<h1>Hallo Jumbo</h1>
+		<% if (polls.length > 0) { %>
+			<% if (newPolls.length > 0) { %>
+			<h2>New Polls</h2>
+				<% newPolls.forEach(item => { %>
+					<article class="new-polls">
+						<a href="<%= `/polls/${item.id}` %>"><%= item.poll %></a>
+					</article>
+				<% }) %>
+			<% } %>
+			<% if (data.length > 0) { %>
+				<h2>Old polls</h2>
+				<% data.forEach(item => { %>
+					<article>
+						<a href="<%= `/polls/${item.id}` %>"><%= item.poll %></a>
+					</article>
+				<% }) %>
+			<% } %>
+			<% if (answeredPolls.length > 0) { %>
+				<h2>Answered Polls</h2>
+				<% answeredPolls.forEach(item => { %>
+					<article>
+						<a href="<%= `/polls/${item.id}` %>"><%= item.poll %></a>
+					</article>
+				<% }) %>
+			<% } %>
+		<% } else {%>
+			<h2>No polls have been created yet!</h2>
+			<a href="/create-poll">Create a poll now!</a>
+		<% } %>
 	</main>
 </body>
-<script src="js/client.js"></script>
+<script src="/js/client.js"></script>
 </html>
