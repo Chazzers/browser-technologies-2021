@@ -139,8 +139,36 @@ main h2 {
 	margin: 1rem;
 }
 
-main #poll-form {
+#create-poll .submit-container {
+	margin: 1rem 0;
+	position: relative;
+}
 
+#create-poll button {
+	font-size: 1em;
+	padding: 1rem;
+	border: none;
+	background-color: #3B5CD0;
+	display: inline-block;
+	color: white;
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+#create-poll #submit {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	margin-bottom: 0;
+}
+
+#create-poll .submit-container button:first-child{
+	float: left;
+}
+
+#create-poll .submit-container button:last-child{
+	float: right;
 }
 
 main #create-poll {

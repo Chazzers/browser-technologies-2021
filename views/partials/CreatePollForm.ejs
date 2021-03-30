@@ -20,11 +20,13 @@
 			<input type="text" id="option-2" name="options" value="">
 		</div>
 	<% } %>
-	<button type="submit" id="add-answer" formaction="create-poll" value="add" name="addOrRemove">
-		Add option
-	</button>
-	<button type="submit" id="remove-answer" formaction="create-poll" value="remove" name="addOrRemove">
-		Remove option
-	</button>
+	<div class="submit-container">
+		<button type="submit" id="add-answer" formaction="create-poll" value="add" name="addOrRemove">
+			Add option
+		</button>
+		<button type="submit" id="remove-answer" formaction="create-poll" value="remove" name="addOrRemove">
+			Remove option
+		</button>
+	</div>
 	<button id="submit" type="submit">Create Poll</button>
 </form>
