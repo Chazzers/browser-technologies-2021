@@ -18,7 +18,7 @@ function askNotificationPermission() {
 	function handlePermission(permission) {
 	  // set the button to shown or hidden, depending on what the user answers
 		if(Notification.permission === 'denied' || Notification.permission === 'default') {
-			console.log('If you want notifications bla bla bla')
+			console.log('If you want notifications, accept push notifications')
 		} else {
 			const newPoll = document.querySelector('.new-polls')
 			setTimeout(() => window.localStorage.removeItem('notification'), fifteenMinutes)
