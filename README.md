@@ -54,7 +54,24 @@ Polls online is a project where i've made an effort to create a server side appl
 
 ## Browser testing
 
+### Test assignments
+
+#### With JavaScript
+1. Create a poll
+2. Vote on a poll
+3. Subscribe to a poll to receive a notification when the poll closes
+
+#### Without JavaScript
+1. Create a poll
+2. Vote on a poll
+
+Subscribing to a poll is done by sending a button event from the client to the server. This means that without JavaScript you can't subscribe.
+
 ### Chrome mobile with JavaScript
+
+The web application works. I can create polls using my app on my mobile phone. The styling looks like it's supposed to. I can turn on notifications when my browser and i receive notifications on my phone when i allow them. 
+
+### Chrome mobile without JavaScript
 
 The web application works. I can create polls using my app on my mobile phone. The styling looks like it's supposed to. I can turn on notifications when my browser and i receive notifications on my phone when i allow them. 
 
@@ -65,6 +82,7 @@ Coming soon
 ### Chrome Desktop
 
 The web application works as expected. I can receive notifications on my desktop whenever on the client a new poll is found. I can create polls on my desktop and i can answer these polls as well. 
+
 ### Firefox desktop
 
 The web application works as expected. I can create polls on my desktop and i can answer these polls as well. I can't receive notifications on firefox because i need to create a button the user has to click on himself to allow notifications. 
