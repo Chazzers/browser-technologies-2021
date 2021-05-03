@@ -318,9 +318,29 @@ button {
 	display: inline-block;
 	color: white;
 	font-weight: 600;
-	margin-bottom: 1rem;
 }
 
 .subscribe-btn {
 	margin-top: 1rem;
+	display: none;
+	margin-left: 1rem;
+}
+
+.create-poll {
+    position: absolute;
+    left: 1rem;
+    top: 0.5rem;
+    height: calc(1.2rem * 1.5 + 1rem);
+    font-size: 0.8rem;
+    color: #ffffff;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.create-poll svg {
+	width: auto;
+    height: 60%;
+    display: block;
+    margin: 0 auto 0.1rem;
 }

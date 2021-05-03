@@ -5,7 +5,7 @@
 <body>
 	<%- include('partials/Header.ejs') %>
 	<main>
-		<h2><%= data.poll %></h2>
+		<h2><%= data.pollQuestion %></h2>
 		<form id="poll-form" action="/polls/<%= data.id %>" method="POST">
 			<% data.options.forEach(option => { %>
 				<div>

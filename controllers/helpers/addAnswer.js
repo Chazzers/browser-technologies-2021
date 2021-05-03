@@ -25,7 +25,8 @@ function addAnswer(req, res) {
 		data: req.body,
 		title: 'Create poll',
 		today: today,
-		week: week
+		week: week,
+		refresh: req.path
 	})
 }
 

@@ -1,72 +1,3 @@
-// function pushNotificationSupported() {
-// 	return 'serviceWorker' in navigator && 'PushManager' in window
-// }
-
-// function initPushNotifications() {
-// 	return Notification.requestPermission((result) => result)
-// }
-
-// function sendNotification() {
-// 	const title = 'Poll closed'
-// 	const options = {
-// 		body: 'A poll has been closed',
-// 		icon: '',
-// 		tag: 'poll-closed'
-// 	}
-
-// 	navigator.serviceWorker.ready.then((serviceWorker) => serviceWorker.showNotification(title, options))
-// }
-
-// function registerServiceWorker() {
-// 	navigator.serviceWorker.register('/sw.js').then(swRegistration => console.log('nice'))
-// }
-// const isPushNotificationSupported = pushNotificationSupported()
-
-// if(isPushNotificationSupported) {
-// 	registerServiceWorker()
-
-// 	initPushNotifications().then(function (consent){
-// 		if(consent === 'granted') {
-// 			sendNotification()
-// 		}
-// 	})
-// }
-
-// const pushServerPublicKey = ''
-
-// async function createNotificationSubscription() {
-// 	return navigator.serviceWorker.ready.then((serviceWorker) => 
-// 		serviceWorker.pushManager
-// 			.subscribe({
-// 				userVisibleOnly: true,
-// 				applicationServerKey: pushServerPublicKey
-// 			})
-// 			.then((subscription) => {
-// 				console.log('User is subscribed.', subscription)
-// 				fetch('push-server/push-subscription', {
-// 					headers: { 
-// 						'content-type': 'application/json;charset=UTF-8', 
-// 						'sec-fetch-mode': 'cors'
-// 					},
-// 					body: JSON.stringify(subscription),
-// 					method: 'POST',
-// 					mode: 'cors'
-// 				})
-// 				return subscription
-// 			})
-// 	)
-// }
-
-// fetch('push-server/push-subscription', {
-// 	headers: { 
-// 		'content-type': 'application/json;charset=UTF-8', 
-// 		'sec-fetch-mode': 'cors'
-// 	},
-// 	body: JSON.stringify(subscription),
-// 	method: 'POST',
-// 	mode: 'cors'
-// })
-
 const subscribeBtn = document.getElementById('subscribe')
 const pollId = window.location.pathname.split('/')[2]
 
@@ -112,12 +43,20 @@ async function subscribe() {
 		})
 	})
 }
-
+// check if serviceWorker exists in the navigator object and if PushManager exists in the window object
 if ('serviceWorker' in navigator && 'PushManager' in window) {
+	// check if subscribeBtn exists
 	if(subscribeBtn) {
-		subscribeBtn.style.display = 'block'
-		if (!subscribeBtn.classList.contains('active')) {
-			subscribeBtn.addEventListener('click', subscribe)
+		// check if notifications are not denied and if cookies are enabled
+		if(Notification.permission !== 'denied' && navigator.cookieEnabled) {
+			subscribeBtn.style.display = 'block'
+			if (!subscribeBtn.classList.contains('active')) {
+				subscribeBtn.addEventListener('click', subscribe)
+			}
+		}
+		// if notifications are disabled or cookies are not enabled
+		else {
+			subscribeBtn.style.display = 'none'
 		}
 	}
 }
