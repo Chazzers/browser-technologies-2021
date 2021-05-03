@@ -12,11 +12,16 @@ async function initPollResults(req, res) {
 
 	currentPoll.options.forEach(option => option.votePercentage = Math.round(option.votes / totalVotes * 100))
 
+	if(currentPoll.closed) {
+		currentPoll.options.sort((a, b) => a - b)
+	}
+
 	render(res, 'poll-results', {
 		data: currentPoll,
 		title: 'Poll results',
 		refresh: req.path,
-		publicVapidKey: publicKey
+		publicVapidKey: publicKey,
+		closed: currentPoll.closed
 	})
 }
 

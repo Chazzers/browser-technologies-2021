@@ -6,24 +6,24 @@ async function initHome(req, res) {
 	const cookies = req.cookies
 	const votedPollIds = Object.keys(cookies)
 
-	const date = new Date()
-	const timeToOld = 15*60*1000
-
 	polls.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
 
-	const newPolls = polls.filter(poll => date - new Date(poll.createdAt) < timeToOld && !votedPollIds.includes(`${poll._id}`))
+	const newPolls = polls.filter(poll => poll.closed !== true && !votedPollIds.includes(`${poll._id}`))
 
-	const oldPolls = polls.filter(poll => date - new Date(poll.createdAt) > timeToOld)
+	const closedPolls = polls.filter(poll => poll.closed === true && !votedPollIds.includes(`${poll._id}`))
 
-	const answeredPolls = polls.filter(poll => votedPollIds.includes(`${poll._id}`))
+	const answeredPolls = polls.filter(poll => votedPollIds.includes(`${poll._id}`) && poll.closed !== true)
+
+	const answeredPollsClosed = polls.filter(poll => votedPollIds.includes(`${poll._id}`) && poll.closed === true)
 
 	render(res, 'index', {
-		data: oldPolls,
+		data: closedPolls,
 		title: 'Polls',
 		newPolls: newPolls,
 		answeredPolls: answeredPolls,
 		polls: polls,
-		refresh: req.path
+		refresh: req.path,
+		answeredPollsClosed:answeredPollsClosed
 	})
 }
 

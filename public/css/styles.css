@@ -344,3 +344,13 @@ button {
     display: block;
     margin: 0 auto 0.1rem;
 }
+
+.closed:first-of-type div {
+	background-color: #3B5CD0;
+	color: #ffffff;
+}
+
+.closed:first-of-type {
+	color: #ffffff;
+	font-weight: bold;
+}

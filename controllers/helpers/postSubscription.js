@@ -8,8 +8,6 @@ async function postSubscription(req) {
 
 	subscriptionsArray.push(subscription)
 
-
-
 	await Poll.updateOne({ _id: id }, {
 		subscriptions: subscriptionsArray
 	})

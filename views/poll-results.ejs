@@ -8,13 +8,23 @@
 		<h2><%= data.pollQuestion %></h2>
 		
 		<% data.options.forEach(option => { %>
-			<div>
+			<div class="<%= closed ? 'closed' : '' %>">
 				<div class="progress" style="transform: scaleX(<%= option.votePercentage / 100 %>)"></div>
 				<p><%= `${option.option}: ${option.votes}` %></p>
 				<p><%= `${option.votePercentage}%` %></p>
 			</div>
 		<% }) %>
-		<button class="subscribe-btn" id="subscribe">Subscribe to poll</button>
+		<% if(closed) { %>
+			<p>This poll has been closed</p>
+		<% } else { %>
+			<button class="subscribe-btn" id="subscribe">Subscribe to poll</button>
+			<p id="no-notifications-text">
+				If you have notifications turned off for this website, you will not be able to subscribe to a poll and receive a notification when the poll is closed.
+			</p>
+			<p id="no-cookie-text">
+				If you have cookies turned off for this website, you will not be able to subscribe to a poll and receive a notification when the poll is closed. You will also be able to vote on Polls infinitely which will ruin the integrity of a poll.
+			</p>
+		<% } %>
 	</main>
 	<a href="/">Back to polls</a>
 </body>

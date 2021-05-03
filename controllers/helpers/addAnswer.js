@@ -2,7 +2,6 @@ function addAnswer(req, res) {
 	const optionValues = []
 	const today = new Date().toISOString().slice(0, 10)
 	const week = new Date(new Date().getTime() + (60*60*24*7*1000)).toISOString().slice(0, 10)
-	console.log(req.body.options)
 	if(req.body.addOrRemove === 'remove' && req.body.options.length > 2) {
 		req.body.options.pop()
 	}

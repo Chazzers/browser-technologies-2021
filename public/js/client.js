@@ -1,4 +1,6 @@
 const subscribeBtn = document.getElementById('subscribe')
+const noCookieText = document.getElementById('no-cookie-text')
+const noNotificationsText = document.getElementById('no-notifications-text')
 const pollId = window.location.pathname.split('/')[2]
 
 function urlBase64ToUint8Array(base64String) {
@@ -48,6 +50,8 @@ if ('serviceWorker' in navigator && 'PushManager' in window) {
 	// check if subscribeBtn exists
 	if(subscribeBtn) {
 		// check if notifications are not denied and if cookies are enabled
+		if(navigator.cookieEnabled) noCookieText.style.display = 'none'
+		if(Notification.permission !== 'denied') noNotificationsText.style.display = 'none'
 		if(Notification.permission !== 'denied' && navigator.cookieEnabled) {
 			subscribeBtn.style.display = 'block'
 			if (!subscribeBtn.classList.contains('active')) {
