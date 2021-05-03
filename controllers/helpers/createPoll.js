@@ -1,12 +1,18 @@
 const Poll = require('../../models/Poll.js')
 
 function createPoll(req, res) {
-	const { poll, options } = req.body
+	const { poll, options, time, date } = req.body
 
 	const transformedOptions = transformOptions(options)
+	
+
+	const closingTime = new Date(`${date} ${time}`).getTime()
+
 	const newPoll = new Poll({
-		poll: poll,
+		pollQuestion: poll,
 		options: transformedOptions,
+		closingTime: closingTime,
+		closed: false
 	})
 	Poll.create(newPoll)
 	res.redirect('/')

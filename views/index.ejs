@@ -10,7 +10,7 @@
 			<h2>New Polls</h2>
 				<% newPolls.forEach(item => { %>
 					<article class="new-polls">
-						<a href="<%= `/polls/${item.id}` %>"><%= item.poll %></a>
+						<a href="<%= `/polls/${item.id}` %>"><%= item.pollQuestion %></a>
 					</article>
 				<% }) %>
 			<% } %>
@@ -18,7 +18,7 @@
 				<h2>Old polls</h2>
 				<% data.forEach(item => { %>
 					<article>
-						<a href="<%= `/polls/${item.id}` %>"><%= item.poll %></a>
+						<a href="<%= `/polls/${item.id}` %>"><%= item.pollQuestion %></a>
 					</article>
 				<% }) %>
 			<% } %>
@@ -26,7 +26,7 @@
 				<h2>Answered Polls</h2>
 				<% answeredPolls.forEach(item => { %>
 					<article>
-						<a href="<%= `/polls/${item.id}` %>"><%= item.poll %></a>
+						<a href="<%= `/polls/${item.id}` %>"><%= item.pollQuestion %></a>
 					</article>
 				<% }) %>
 			<% } %>

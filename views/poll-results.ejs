@@ -9,13 +9,17 @@
 		
 		<% data.options.forEach(option => { %>
 			<div>
-				<div class="progress" style="width: <%= option.votePercentage %>%"></div>
+				<div class="progress" style="transform: scaleX(<%= option.votePercentage / 100 %>)"></div>
 				<p><%= `${option.option}: ${option.votes}` %></p>
 				<p><%= `${option.votePercentage}%` %></p>
 			</div>
 		<% }) %>
+		<button class="subscribe-btn" id="subscribe">Subscribe to poll</button>
 	</main>
 	<a href="/">Back to polls</a>
 </body>
+<script>
+	const vapidKey = <%- JSON.stringify(publicVapidKey) %>
+</script>
 <script src="/js/client.js"></script>
 </html>

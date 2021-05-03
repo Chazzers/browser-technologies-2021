@@ -22,7 +22,8 @@ async function initHome(req, res) {
 		title: 'Polls',
 		newPolls: newPolls,
 		answeredPolls: answeredPolls,
-		polls: polls
+		polls: polls,
+		refresh: req.path
 	})
 }
 

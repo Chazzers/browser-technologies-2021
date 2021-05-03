@@ -1,39 +1,31 @@
-const options = []
-
-
 function addAnswer(req, res) {
 	const optionValues = []
-	if(req.body.addOrRemove === 'add') {
-		options.push({ key: `option-${1}`,  value: ''})
-	}
+	const today = new Date().toISOString().slice(0, 10)
+	const week = new Date(new Date().getTime() + (60*60*24*7*1000)).toISOString().slice(0, 10)
+	console.log(req.body.options)
 	if(req.body.addOrRemove === 'remove' && req.body.options.length > 2) {
-		options.pop()
+		req.body.options.pop()
 	}
-	if(Array.isArray(req.body.options)) {
+	if(req.body.options) {
 		req.body.options.forEach(option => optionValues.push(option))
 	}
-	else if(req.body.options) {
-		optionValues.push(req.body.options)
+	if(req.body.addOrRemove === 'add') {
+		optionValues.push('')
 	}
-	const optionsArray = options.map((option, index) => {
-		if(optionValues[index]) {
-			return {
-				id: `option-${index + 1}`, 
-				value: optionValues[index],
-				name: `Option-${index + 1}`
-			}
-		}
+	const newOptionsArray = optionValues.map((option, index) => {
 		return {
 			id: `option-${index + 1}`, 
-			value: '',
+			value: option,
 			name: `Option-${index + 1}`
 		}
 	})
-	req.body.options = optionsArray
+	req.body.options = newOptionsArray
 	
 	res.render('create-poll', {
 		data: req.body,
-		title: 'Create poll'
+		title: 'Create poll',
+		today: today,
+		week: week
 	})
 }
 

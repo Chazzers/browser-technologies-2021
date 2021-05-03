@@ -1,23 +1,49 @@
 <form id="create-poll" action="submit-poll" method="POST">
 	<div>
-		<label for="poll">Poll</label>
-		<input value="<%= data.poll !== undefined ? data.poll : '' %>" type="text" id="poll" name="poll" required>
+		<label>
+			Poll
+			<input value="<%= data.poll !== undefined ? data.poll : '' %>" type="text" name="poll" required>
+		</label>
 	</div>
 	<% if(data.options) { %>
-	<% data.options.forEach((option) => { %>
-		<div>
-			<label for="<%= option.id %>"><%= option.name %></label>
-			<input type="text" id="<%= option.id %>" name="options" value="<%= option.value %>" required>
-		</div>
+		<% if(data.options[0]) { %>
+			<div>
+				<label>
+					Option 1
+					<input type="text" name="options" value="<%= data.options[0].value %>">
+				</label>
+			</div>
+		<% } %>
+		<% if(data.options[1]) { %>
+			<div>
+				<label>
+					Option 2
+					<input type="text" name="options" value="<%= data.options[1].value %>">
+				</label>
+			</div>
+		<% } %>
+	<% data.options.forEach((option, index) => { %>
+		<%	if(index >= 2) { %>
+			<div>
+				<label>
+					<%= option.name %>
+					<input type="text" name="options" value="<%= option.value %>" required>
+				</label>
+			</div>
+		<% } %>
 	<% }) %>
 	<% } else { %>
 		<div>
-			<label for="option-1">Option 1</label>
-			<input type="text" id="option-1" name="options" value="">
+			<label>
+				Option 1
+				<input type="text" name="options" value="">
+			</label>
 		</div>
 		<div>
-			<label for="option-2">Option 2</label>
-			<input type="text" id="option-2" name="options" value="">
+			<label>
+				Option 2
+				<input type="text" name="options" value="">
+			</label>
 		</div>
 	<% } %>
 	<div class="submit-container">
@@ -27,6 +53,59 @@
 		<button type="submit" id="remove-answer" formaction="create-poll" value="remove" name="addOrRemove">
 			Remove option
 		</button>
+	</div>
+	<div class="date-container">
+		<% if (data.date) { %>
+		<label>
+			Closing date
+			<input 
+				type="date" 
+				name="date" 
+				value="<%= data.date %>"
+				min="<%= today && today %>" 
+				max="<%= week && week %>"
+				pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"
+				title="dd/mm/yyyy"
+				required
+			>
+		</label>
+		<% } else { %>
+			<label>
+				Closing date
+				<input 
+					type="date" 
+					name="date" 
+					min="<%= today && today %>" 
+					max="<%= week && week %>"
+					pattern="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"
+					title="dd/mm/yyyy"
+					required
+				>
+			</label>
+		<% } %>
+		<label>
+			Closing time
+			<% if (data.time) { %>
+				<input 
+					type="time" 
+					name="time" 
+					value="<%= data.time %>" 
+					required>
+			<% } else { %>
+				<% 
+					const time = new Date()
+					time.setHours(time.getHours() + 1)
+			  	%>
+				<input
+					type="time" 
+					name="time" 
+					value="<%= time.toLocaleTimeString('en-GB', { hour12: false }).slice(0, -3) %>"
+					pattern="^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$"
+					title="hh:mm"
+					required
+				>
+			<% } %>
+		</label>
 	</div>
 	<button id="submit" type="submit">Create Poll</button>
 </form>

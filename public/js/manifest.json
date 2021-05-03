@@ -1,0 +1,9 @@
+{
+	"name": "polls-online",
+	"short_name": "Polls online",
+	"theme_color": "#3B5CD0",
+	"background_color": "#ffffff",
+	"display": "browser",
+	"scope": "/",
+	"start_url": "/"
+  }
