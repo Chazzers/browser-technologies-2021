@@ -15,13 +15,22 @@ async function initPollResults(req, res) {
 	if(currentPoll.closed) {
 		currentPoll.options.sort((a, b) => a - b)
 	}
+	function isObjectEmpty(value) {
+		return (
+		  Object.prototype.toString.call(value) === '[object Object]' &&
+		  JSON.stringify(value) === '{}'
+		)
+	  }
+
+	const cookiesAllowed = isObjectEmpty(req.cookies)
 
 	render(res, 'poll-results', {
 		data: currentPoll,
 		title: 'Poll results',
 		refresh: req.path,
 		publicVapidKey: publicKey,
-		closed: currentPoll.closed
+		closed: currentPoll.closed,
+		cookies: cookiesAllowed
 	})
 }
 

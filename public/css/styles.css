@@ -354,3 +354,17 @@ button {
 	color: #ffffff;
 	font-weight: bold;
 }
+
+
+.browser-fallback h5 {
+	margin-bottom: 0;
+	margin-top: 1rem;
+}
+
+.browser-fallback:first-of-type h5 {
+	margin-top: 1em;
+}
+
+.browser-fallback p {
+	margin: 0;
+}

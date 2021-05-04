@@ -18,12 +18,27 @@
 			<p>This poll has been closed</p>
 		<% } else { %>
 			<button class="subscribe-btn" id="subscribe">Subscribe to poll</button>
-			<p id="no-notifications-text">
-				If you have notifications turned off for this website, you will not be able to subscribe to a poll and receive a notification when the poll is closed.
-			</p>
-			<p id="no-cookie-text">
-				If you have cookies turned off for this website, you will not be able to subscribe to a poll and receive a notification when the poll is closed. You will also be able to vote on Polls infinitely which will ruin the integrity of a poll.
-			</p>
+
+			<section class="browser-fallback" id="no-js-text">
+				<h5>You have disabled JavaScript</h5>
+				<p>
+					If you have disabled JavaScript you can't subscribe to polls and therefore wont get notified when a poll closes. 
+				</p>
+			</section>
+			<section class="browser-fallback" id="no-notifications-text">
+				<h5>You have disabled notifications for this website</h5>
+				<p>
+					If you have notifications turned off for this website, you will not be able to subscribe to a poll and receive a notification when the poll is closed.
+				</p>
+			</section>
+			<% if (cookies) {%>
+				<section class="browser-fallback" id="no-cookie-text">
+					<h5>You have blocked all cookies</h5>
+					<p>
+						If you have cookies turned off for this website, you will not be able to subscribe to a poll and receive a notification when the poll is closed. You will also be able to vote on Polls infinitely which will ruin the integrity of a poll.
+					</p>
+				</section>
+			<% } %>
 		<% } %>
 	</main>
 	<a href="/">Back to polls</a>

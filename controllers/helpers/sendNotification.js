@@ -1,9 +1,7 @@
 const webpush = require('web-push')
 
 async function sendNotification(subscription, poll, winner) {
-	const { _id, pollQuestion } = poll
-	
-	console.log(poll)
+	const { pollQuestion } = poll
 
 	const payload = JSON.stringify({
 		title: `${pollQuestion} results are in`,
