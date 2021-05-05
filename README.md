@@ -43,6 +43,25 @@ npm run start
 
 ## Features
 
+### Create a poll
+You can create a Poll. This poll will then be shown on the home page where people can click on it and then navigate to the voting page of the poll. 
+![create-poll](https://user-images.githubusercontent.com/33430669/117184449-0a76d300-add9-11eb-9b37-6a57fba17238.jpg)
+
+### Vote on a poll
+
+You can vote on a Poll. The vote will be sent to the server and the server will then update the vote count in the database. The vote count of the current Poll will then be shown on the results page. 
+![vote-poll](https://user-images.githubusercontent.com/33430669/117184447-0a76d300-add9-11eb-85c1-babda87dd497.jpg)
+
+### Subscribe to a poll
+
+You can subscribe to a Poll. When subscribed to a Poll you will receive a notification when the poll is closed with the text that shows the winner of the Poll. 
+
+![subscribe-poll](https://user-images.githubusercontent.com/33430669/117184445-09de3c80-add9-11eb-9782-c9dbc350845b.jpg)
+
+When you are subscribed to a poll the notification you receive from chrome on a windows 10 computer will look like this:
+
+![poll-notification](https://user-images.githubusercontent.com/33430669/117184450-0b0f6980-add9-11eb-8ad5-9bd4583376f1.jpg)
+
 ## MongoDB and Express
 
 I've chosen to use MongoDB as a database to store the created polls, and Express as a node server middleware  to render the polls and pages on the server. 
