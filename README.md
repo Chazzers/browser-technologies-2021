@@ -45,11 +45,13 @@ npm run start
 
 ### Create a poll
 You can create a Poll. This poll will then be shown on the home page where people can click on it and then navigate to the voting page of the poll. 
+
 ![create-poll](https://user-images.githubusercontent.com/33430669/117184449-0a76d300-add9-11eb-9b37-6a57fba17238.jpg)
 
 ### Vote on a poll
 
 You can vote on a Poll. The vote will be sent to the server and the server will then update the vote count in the database. The vote count of the current Poll will then be shown on the results page. 
+
 ![vote-poll](https://user-images.githubusercontent.com/33430669/117184447-0a76d300-add9-11eb-85c1-babda87dd497.jpg)
 
 ### Subscribe to a poll
