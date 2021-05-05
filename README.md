@@ -41,6 +41,8 @@ And in production mode by running the following command:
 npm run start
 ```
 
+## Features
+
 ## MongoDB and Express
 
 I've chosen to use MongoDB as a database to store the created polls, and Express as a node server middleware  to render the polls and pages on the server. 
